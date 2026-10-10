@@ -16,7 +16,8 @@ void Harl::info(void)
 void Harl::warning(void)
 {
     std::cout << "[ WARNING ]" << std::endl;
-    std::cout << "I think I deserve to have some extra bacon for free. I've been coming for years, whereas you started working here just last month." << std::endl << std::endl;
+    std::cout << "I think I deserve to have some extra bacon for free." << std::endl;
+    std::cout << "I've been coming for years, whereas you started working here just last month." << std::endl << std::endl;
 }
 
 void Harl::error(void)
@@ -27,39 +28,32 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
-    const std::string levels[4] = {
-        "DEBUG", "INFO", "WARNING", "ERROR"
-    };
-
+    const std::string levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
     void (Harl::*functions[4])(void) = {
-        &Harl::debug,
-        &Harl::info,
-        &Harl::warning,
-        &Harl::error
+        &Harl::debug, &Harl::info, &Harl::warning, &Harl::error
     };
 
-    int index = 4;
-
+    int selected = 4;
     for (int i = 0; i < 4; ++i)
     {
         if (level == levels[i])
         {
-            index = i;
+            selected = i;
             break;
         }
     }
 
-    switch (index)
+    switch (selected)
     {
         case 0:
             (this->*functions[0])();
-            /* fall through */
+            // fall through
         case 1:
             (this->*functions[1])();
-            /* fall through */
+            // fall through
         case 2:
             (this->*functions[2])();
-            /* fall through */
+            // fall through
         case 3:
             (this->*functions[3])();
             break;

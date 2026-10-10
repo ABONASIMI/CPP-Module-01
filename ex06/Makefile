@@ -1,8 +1,6 @@
 NAME = harlFilter
-
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
 SRC = main.cpp Harl.cpp
 OBJ = $(SRC:.cpp=.o)
 DEP = $(OBJ:.o=.d)
@@ -21,8 +19,8 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
 -include $(DEP)
-
 .PHONY: all clean fclean re

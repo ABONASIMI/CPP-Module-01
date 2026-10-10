@@ -1,4 +1,5 @@
 #include "FileReplacer.hpp"
+#include <iostream>
 
 int main(int argc, char **argv)
 {
@@ -9,9 +10,7 @@ int main(int argc, char **argv)
     }
 
     FileReplacer replacer(argv[1], argv[2], argv[3]);
-
     if (!replacer.replace())
         return 1;
-
     return 0;
 }
